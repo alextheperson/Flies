@@ -4,6 +4,6 @@ deployment:
     - export DEPLOYPATH=/home/alexizys/flies.alexsol.is
     - /bin/cp index.html $DEPLOYPATH
     - /bin/cp script.js $DEPLOYPATH
-    - /bin/cp style.css.js $DEPLOYPATH
+    - /bin/cp style.css $DEPLOYPATH
     - /bin/cp -R fly $DEPLOYPATH
     - /bin/cp -R images $DEPLOYPATH
