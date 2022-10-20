@@ -5,7 +5,7 @@ class Wall {
         this.h = h
     }
 
-    show(){
+    show() {
         push();
         noStroke();
         fill(170, 0, 0);

@@ -4,7 +4,7 @@ class Food {
         this.radius = radius;
     }
 
-    show(){
+    show() {
         push();
         noStroke();
         translate(this.pos.x, this.pos.y);
