@@ -8,9 +8,9 @@ class Population {
         this.totSucsessRate = 0
 
         this.food = new Food(width / 2, 50, 30);
-        this.wall1 = new Wall(width / 2, height - height / 3, 300, 30);
-        this.wall2 = new Wall(width / 6, height - height / 2, 300, 30);
-        this.wall3 = new Wall(map(width / 6, 0, width, width, 0), height - height / 2, 300, 30);
+        this.wall1 = new Wall(width / 2, height - height / 3, width / 2, height / 20);
+        this.wall2 = new Wall(width / 6, height - height / 2, width / 3, height / 20);
+        this.wall3 = new Wall(map(width / 6, 0, width, width, 0), height - height / 2, width / 3, height / 20);
 
         this.flies = [];
         this.pool = [];
