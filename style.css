@@ -14,7 +14,7 @@ main {
 }
 
 .control-panel div {
-    background-color: #eeeeee;
+    background-color: var(--background);
     padding: 10px;
     flex-grow: 1;
 }
@@ -41,7 +41,7 @@ progress[value] {
     height: 30px;
 
     /* Although firefox doesn't provide any additional pseudo class to style the progress element container, any style applied here works on the container. */
-    background-color: #eeeeee;
+    background-color: var(--background);
 
     /* Of all IE, only IE10 supports progress element that too partially. It only allows to change the background-color of the progress value using the 'color' attribute. */
     color: #aa0000;
@@ -57,7 +57,7 @@ Webkit browsers provide two pseudo classes that can be use to style HTML5 progre
 */
 
 progress[value]::-webkit-progress-bar {
-    background-color: #eeeeee
+    background-color: var(--background)
 }
 
 progress[value]::-webkit-progress-value {
