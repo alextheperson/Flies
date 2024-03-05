@@ -1,7 +1,7 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/alexizys/flies.alexsol.is
+    - export DEPLOYPATH=/home/alexizys/public_html/projects/flies
     - /bin/cp index.html $DEPLOYPATH
     - /bin/cp script.js $DEPLOYPATH
     - /bin/cp style.css $DEPLOYPATH
