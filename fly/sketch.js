@@ -22,7 +22,7 @@ function frame() {
 function setup() {
     createCanvas(document.getElementById("canvas").offsetWidth, document.getElementById("canvas").offsetHeight).parent("canvas");
 
-    houseflyGraphic = loadImage("../images/HouseFly2_.png")
+    houseflyGraphic = loadImage("images/HouseFly2_.png")
 
     populationAge = 0
     generation = 0
