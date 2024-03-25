@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>repl.it</title>
+    <title>Fly Program</title>
     <link href="style.css" rel="stylesheet" type="text/css" />
     <link rel="icon" href="../images/HouseFly2_.png" />
     <script src="https://cdn.jsdelivr.net/npm/p5@1.5.0/lib/p5.js"></script>
@@ -20,7 +20,7 @@
     <main>
       <div class="control-panel">
         <div>
-          <p>
+          <span>
             Reward:<input
               type="text"
               id="reward"
@@ -39,8 +39,8 @@
               value="10"
               onkeyup="printResult()"
             />
-          </p>
-          <p>
+          </span>
+          <span>
             Population Size:
             <input
               type="range"
@@ -68,37 +68,39 @@
               id="mutation"
               oninput="printResult()"
             />
-          </p>
-          <p id="out">
+          </span>
+          <span id="out">
             Reward: 500<br />
             Punishment: 3<br />
             Speed: 10<br />
             Population Size: 190<br />
             Life Span: 800<br />
             Mutation Rate: 0.1
-          </p>
-          <button type="submit" id="run" onclick="setup()">
-            Run Experiment
-          </button>
-          <button type="submit" id="re" onclick="re()">Reset Controls</button>
-          <button type="submit" id="info" onclick="info()">?</button>
+          </span>
+          <span>
+            <button type="submit" id="run" onclick="setup()">
+              Run Experiment
+            </button>
+            <button type="submit" id="re" onclick="re()">Reset Controls</button>
+            <button type="submit" id="info" onclick="info()">?</button>
+          </span>
         </div>
         <div>
-          <p id="stats">
+          <span id="stats">
             Reward: 500<br />
             Punishment: 3<br />
             Speed: 10<br />
             Population Size: 190<br />
             Life Span: 800<br />
             Mutation Rate: 0.1
-          </p>
-          <p id="currentStats">
+          </span>
+          <span id="currentStats">
             Generation: 0<br />
             Average Fitness: 250.0<br />
             Success Rate: 0/500<br />
             Total Successes: 0<br />
             Age: 0
-          </p>
+          </span>
         </div>
       </div>
       <div class="view">
