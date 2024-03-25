@@ -1,53 +1,62 @@
+body {
+  background-color: #ddd;
+}
+
 main {
-    flex-direction: row;
-    margin: 30px;
+  display: flex;
+  flex-direction: row;
+  margin: 30px;
+}
+
+input,
+select {
+  accent-color: #aa0000;
+  margin-block: 2px;
 }
 
 .control-panel {
-    display: flex;
-    flex-direction: column;
-    margin-right: 30px;
-}
-
-.control-panel div:not(:last-of-type) {
-    margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  margin-right: 30px;
+  gap: 30px;
 }
 
 .control-panel div {
-    background-color: var(--background);
-    padding: 10px;
-    flex-grow: 1;
+  background-color: #ccc;
+  padding: 10px;
+  flex-grow: 1;
 }
 
 .view {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 
 #canvas {
-    flex-grow: 1;
+  flex-grow: 1;
 }
 
 progress[value] {
-    /* Get rid of the default appearance */
-    appearance: none;
+  /* Get rid of the default appearance */
+  appearance: none;
 
-    /* This unfortunately leaves a trail of border behind in Firefox and Opera. We can remove that by setting the border to none. */
-    border: none;
+  /* This unfortunately leaves a trail of border behind in Firefox and Opera. We can remove that by setting the border to none. */
+  border: none;
 
-    /* Add dimensions */
-    width: 100%;
-    height: 30px;
+  /* Add dimensions */
+  width: 100%;
+  height: 30px;
 
-    /* Although firefox doesn't provide any additional pseudo class to style the progress element container, any style applied here works on the container. */
-    background-color: var(--background);
+  /* Although firefox doesn't provide any additional pseudo class to style the progress element container, any style applied here works on the container. */
+  background-color: #ccc;
 
-    /* Of all IE, only IE10 supports progress element that too partially. It only allows to change the background-color of the progress value using the 'color' attribute. */
-    color: #aa0000;
+  /* Of all IE, only IE10 supports progress element that too partially. It only allows to change the background-color of the progress value using the 'color' attribute. */
+  color: #aa0000;
+  accent-color: #aa0000;
 
-    position: relative;
-    margin: 0 0 1.5em;
+  position: relative;
+  margin: 0 0 1.5em;
 }
 
 /*
@@ -57,13 +66,17 @@ Webkit browsers provide two pseudo classes that can be use to style HTML5 progre
 */
 
 progress[value]::-webkit-progress-bar {
-    background-color: var(--background)
+  background-color: var(--background);
 }
 
 progress[value]::-webkit-progress-value {
-    background-color: #aa0000;
+  background-color: #aa0000;
+}
+
+::-moz-progress-bar {
+  background-color: #aa0000;
 }
 
 canvas {
-    position: absolute;
+  position: absolute;
 }

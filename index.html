@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
     <title>repl.it</title>
-    <link href="//alexsol.is/style.css" rel="stylesheet" type="text/css" />
     <link href="style.css" rel="stylesheet" type="text/css" />
-    <link rel="icon" href="../images/HouseFly2_.png">
+    <link rel="icon" href="../images/HouseFly2_.png" />
     <script src="https://cdn.jsdelivr.net/npm/p5@1.5.0/lib/p5.js"></script>
     <script src="script.js" type="text/javascript" defer></script>
     <script src="fly/DNA.js" type="text/javascript" defer></script>
@@ -16,60 +14,97 @@
     <script src="fly/Population.js" type="text/javascript" defer></script>
     <script src="fly/Wall.js" type="text/javascript" defer></script>
     <script src="fly/sketch.js" type="text/javascript" defer></script>
-</head>
+  </head>
 
-<body>
+  <body>
     <main>
-        <div class="control-panel">
-            <div>
-                <p>
-                    Reward:<input type="text" id="reward" value="500" onkeyup="printResult()"><br>
-                    Punishment:<input type="text" id="punishment" value="3" onkeyup="printResult()"><br>
-                    Speed:<input type="text" id="speed" value="10" onkeyup="printResult()">
-                </p>
-                <p>
-                    Population Size:
-                    <input type="range" min="1" max="500" value="190" id="population" oninput="printResult()"><br>
-                    Life Span:
-                    <input type="range" min="650" max="5000" value="800" id="lifeSpan" oninput="printResult()"><br>
-                    Mutation Rate:
-                    <input type="range" min="1" max="99" value="10" id="mutation" oninput="printResult()">
-                </p>
-                <p id="out">
-                    Reward: 500<br>
-                    Punishment: 3<br>
-                    Speed: 10<br>
-                    Population Size: 190<br>
-                    Life Span: 800<br>
-                    Mutation Rate: 0.1
-                </p>
-                <button type="submit" id="run" onclick="setup()">Run Experiment</button>
-                <button type="submit" id="re" onclick="re()">Reset Controls</button>
-                <button type="submit" id="info" onclick="info()">?</button>
-            </div>
-            <div>
-                <p id="stats">
-                    Reward: 500<br>
-                    Punishment: 3<br>
-                    Speed: 10<br>
-                    Population Size: 190<br>
-                    Life Span: 800<br>
-                    Mutation Rate: 0.1
-                </p>
-                <p id="currentStats">
-                    Generation: 0<br>
-                    Average Fitness: 250.0<br>
-                    Success Rate: 0/500<br>
-                    Total Successes: 0<br>
-                    Age: 0
-                </p>
-            </div>
+      <div class="control-panel">
+        <div>
+          <p>
+            Reward:<input
+              type="text"
+              id="reward"
+              value="500"
+              onkeyup="printResult()"
+            /><br />
+            Punishment:<input
+              type="text"
+              id="punishment"
+              value="3"
+              onkeyup="printResult()"
+            /><br />
+            Speed:<input
+              type="text"
+              id="speed"
+              value="10"
+              onkeyup="printResult()"
+            />
+          </p>
+          <p>
+            Population Size:
+            <input
+              type="range"
+              min="1"
+              max="500"
+              value="190"
+              id="population"
+              oninput="printResult()"
+            /><br />
+            Life Span:
+            <input
+              type="range"
+              min="650"
+              max="5000"
+              value="800"
+              id="lifeSpan"
+              oninput="printResult()"
+            /><br />
+            Mutation Rate:
+            <input
+              type="range"
+              min="1"
+              max="99"
+              value="10"
+              id="mutation"
+              oninput="printResult()"
+            />
+          </p>
+          <p id="out">
+            Reward: 500<br />
+            Punishment: 3<br />
+            Speed: 10<br />
+            Population Size: 190<br />
+            Life Span: 800<br />
+            Mutation Rate: 0.1
+          </p>
+          <button type="submit" id="run" onclick="setup()">
+            Run Experiment
+          </button>
+          <button type="submit" id="re" onclick="re()">Reset Controls</button>
+          <button type="submit" id="info" onclick="info()">?</button>
         </div>
-        <div class="view">
-            <progress value="0" id="age"></progress>
-            <div id="canvas"></div>
+        <div>
+          <p id="stats">
+            Reward: 500<br />
+            Punishment: 3<br />
+            Speed: 10<br />
+            Population Size: 190<br />
+            Life Span: 800<br />
+            Mutation Rate: 0.1
+          </p>
+          <p id="currentStats">
+            Generation: 0<br />
+            Average Fitness: 250.0<br />
+            Success Rate: 0/500<br />
+            Total Successes: 0<br />
+            Age: 0
+          </p>
         </div>
+      </div>
+      <div class="view">
+        <progress value="0" id="age"></progress>
+        <div id="canvas"></div>
+      </div>
     </main>
-</body>
-
+  </body>
 </html>
