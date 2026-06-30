@@ -3,12 +3,41 @@ let myWindow;
 function printResult() {
     let LIFE_SPAN = document.getElementById("lifeSpan").value; // how long flies do live
     let POPULATION = document.getElementById("population").value; // how manny flies do we want
-    let speed = document.getElementById("speed").value;
+    let SPEED = document.getElementById("speed").value;
     let REWARD_MULT = document.getElementById("reward").value; // what is the reward for finding food
     let PUNISH_DIV = document.getElementById("punishment").value; // punishment for hitting things
     let MUTATION = document.getElementById("mutation").value / 100; // the mutation rate
-    document.getElementById("out").innerHTML = "Reward: " + str(REWARD_MULT) + "<br>Punishment: " + str(PUNISH_DIV) + "<br>Speed: " + str(speed) + "<br>Population Size: " + str(POPULATION) + "<br>Life Span: " + str(LIFE_SPAN) + "<br>Mutation Rate: " + str(MUTATION);
+
+    document.getElementById("out").innerHTML = `
+<tbody>
+    <tr>
+        <th>Reward</th>
+        <td>${REWARD_MULT}</td>
+    </tr>
+    <tr>
+        <th>Punishment</th>
+        <td>${PUNISH_DIV}</td>
+    </tr>
+    <tr>
+        <th>Speed</th>
+        <td>${SPEED}</td>
+    </tr>
+    <tr>
+        <th>Population Size</th>
+        <td>${POPULATION}</td>
+    </tr>
+    <tr>
+        <th>Life Span</th>
+        <td>${LIFE_SPAN}</td>
+    </tr>
+    <tr>
+        <th>Mutation Rate</th>
+        <td>${MUTATION}</td>
+    </tr>
+</tbody>
+`
 }
+printResult()
 
 function re() {
     document.getElementById('lifeSpan').value = 800;

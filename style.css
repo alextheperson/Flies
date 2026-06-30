@@ -1,47 +1,76 @@
-body {
+body, html {
   background-color: #ddd;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin: 0;
+  height: 100%;
 }
 
 main {
-  display: flex;
+  display: grid;
   flex-direction: row;
-  margin: 30px;
+  grid-template-columns: 25vw auto 20vw;
+  grid-template-rows:  30px auto auto;
+  grid-template-areas: 
+    "controls progress inspector"
+    "controls canvas inspector"
+    "stats canvas inspector";
+  gap: 30px;
+  padding: 30px;
+  height: 100%;
+  box-sizing: border-box;
 }
 
 input,
 select {
   accent-color: #aa0000;
-  margin-block: 2px;
 }
 
-.control-panel {
-  display: flex;
-  flex-direction: column;
-  margin-right: 30px;
-  gap: 30px;
-}
-
-.control-panel div {
+main > div {
   background-color: #ccc;
+  box-sizing: border-box;
   padding: 10px;
-  flex-grow: 1;
+}
+
+.controls {
+  grid-area: controls;
+}
+.stats {
+  grid-area: stats;
+}
+.progress {
+  grid-area: progress;
+}
+.canvas {
+  grid-area: canvas;
+  padding: 0px;
+}
+.inspector {
+  grid-area: inspector;
+  font-family: monospace;
+}
+
+.controls, .stats, .inspector {
   display: flex;
   flex-direction: column;
-  gap: 1em;
+  gap: 0.5rem;
 }
 
-.view {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
+.row {
+    display: flex;
+    gap: 0.5rem;
 }
 
-#canvas {
-  flex-grow: 1;
+.row > button {
+    display: block;
+    width: 0;
+    flex-grow: 1;
 }
 
-progress[value] {
+h1, h2 {
+    margin: 0;
+}
+
+progress {
   /* Get rid of the default appearance */
   appearance: none;
 
@@ -60,7 +89,6 @@ progress[value] {
   accent-color: #aa0000;
 
   position: relative;
-  margin: 0 0 1.5em;
 }
 
 /*
@@ -69,11 +97,11 @@ Webkit browsers provide two pseudo classes that can be use to style HTML5 progre
 -webkit-progress-value -> To style the progress element value.
 */
 
-progress[value]::-webkit-progress-bar {
+progress::-webkit-progress-bar {
   background-color: var(--background);
 }
 
-progress[value]::-webkit-progress-value {
+progress::-webkit-progress-value {
   background-color: #aa0000;
 }
 
@@ -83,4 +111,29 @@ progress[value]::-webkit-progress-value {
 
 canvas {
   position: absolute;
+}
+
+table, tr, td, td {
+  border: 1px solid #aaa;
+  border-collapse: collapse;
+}
+
+th {
+  text-align: left;
+}
+
+td, th {
+  padding: 2px;
+}
+
+tr:nth-child(odd) {
+  background-color: #c0c0c0;
+}
+
+tr.active {
+  background-color: #ffa;
+}
+
+td.relocated {
+  background-color: #aaf;
 }

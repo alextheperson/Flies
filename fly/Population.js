@@ -33,7 +33,6 @@ class Population {
 
 
         for (let i = 0; i < this.pop_size; i++) {
-
             if (this.flies[i].fitness > maxFit) {
                 maxFit = this.flies[i].fitness;
             }
@@ -42,7 +41,8 @@ class Population {
 
 
         for (let i = 0; i < this.pop_size; i++) {
-            let poolRank = int(this.flies[i].fitness / maxFit * 40)
+            // The higher the fitness, the more likely the fly is to be chosen as a parent
+            let poolRank = Math.max(this.flies[i].fitness / maxFit * 20, 1)
 
             for (let j = 0; j < poolRank; j++) {
                 this.pool.push(this.flies[i])
@@ -66,11 +66,8 @@ class Population {
 
             let newfly = new Fly(this.life_span, this.reward, this.punishment, this.food, this.flyImg);
 
-            let randomA = int(random(0, this.pool.length));
-            let randomB = int(random(0, this.pool.length));
-
-            let parentA = this.pool[randomA];
-            let parentB = this.pool[randomB];
+            let parentA = random(this.pool);
+            let parentB = random(this.pool);
 
             newfly.dna.generateMergedDna(mutationRate, parentA, parentB);
 
@@ -81,17 +78,28 @@ class Population {
     }
 
     run(count) {
+        this.sucsessRate = 0;
+        this.totSucsessRate = 0;
+
+        for (let i = 0; i < this.pop_size; i++) {
+            this.flies[i].update(count, this.wall1, this.wall2, this.wall3);
+            if (this.flies[i].hitFood) {
+                this.sucsessRate += 1
+                this.totSucsessRate += 1
+            }
+        }
+    }
+
+    show() {
         this.food.show();
         this.wall1.show();
         this.wall2.show();
         this.wall3.show();
         for (let i = 0; i < this.pop_size; i++) {
-            this.flies[i].update(count, this.wall1, this.wall2, this.wall3);
-            this.flies[i].show();
-            if (this.flies[i].hitFood) {
-                this.sucsessRate += 1
-                this.totSucsessRate += 1
+            if (mouseIsPressed && dist(mouseX, mouseY, this.flies[i].pos.x, this.flies[i].pos.y) < 25) {
+                selectedFly = i;
             }
+            this.flies[i].show(selectedFly === i);
         }
     }
 }

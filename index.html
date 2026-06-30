@@ -1,112 +1,82 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>Fly Program</title>
-    <link href="style.css" rel="stylesheet" type="text/css" />
-    <link rel="icon" href="../images/HouseFly2_.png" />
-    <script src="https://cdn.jsdelivr.net/npm/p5@1.5.0/lib/p5.js"></script>
-    <script src="script.js" type="text/javascript" defer></script>
-    <script src="fly/DNA.js" type="text/javascript" defer></script>
-    <script src="fly/Fly.js" type="text/javascript" defer></script>
-    <script src="fly/Food.js" type="text/javascript" defer></script>
-    <script src="fly/Population.js" type="text/javascript" defer></script>
-    <script src="fly/Wall.js" type="text/javascript" defer></script>
-    <script src="fly/sketch.js" type="text/javascript" defer></script>
-  </head>
+<head>
+  <meta charset="utf-8" >
+  <meta name="viewport" content="width=device-width" >
+  <title>Fly Program</title>
+  <link href="style.css" rel="stylesheet" type="text/css" >
+  <link rel="icon" href="../images/HouseFly2_.png" >
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.5.0/lib/p5.js"></script>
+  <script src="script.js" type="text/javascript" defer></script>
+  <script src="fly/DNA.js" type="text/javascript" defer></script>
+  <script src="fly/Fly.js" type="text/javascript" defer></script>
+  <script src="fly/Food.js" type="text/javascript" defer></script>
+  <script src="fly/Population.js" type="text/javascript" defer></script>
+  <script src="fly/Wall.js" type="text/javascript" defer></script>
+  <script src="fly/sketch.js" type="text/javascript" defer></script>
+</head>
 
-  <body>
-    <main>
-      <div class="control-panel">
-        <div>
-          <span>
-            Reward:<input
-              type="text"
-              id="reward"
-              value="500"
-              onkeyup="printResult()"
-            /><br />
-            Punishment:<input
-              type="text"
-              id="punishment"
-              value="3"
-              onkeyup="printResult()"
-            /><br />
-            Speed:<input
-              type="text"
-              id="speed"
-              value="10"
-              onkeyup="printResult()"
-            />
-          </span>
-          <span>
-            Population Size:
-            <input
-              type="range"
-              min="1"
-              max="500"
-              value="190"
-              id="population"
-              oninput="printResult()"
-            /><br />
-            Life Span:
-            <input
-              type="range"
-              min="650"
-              max="5000"
-              value="800"
-              id="lifeSpan"
-              oninput="printResult()"
-            /><br />
-            Mutation Rate:
-            <input
-              type="range"
-              min="1"
-              max="99"
-              value="10"
-              id="mutation"
-              oninput="printResult()"
-            />
-          </span>
-          <span id="out">
-            Reward: 500<br />
-            Punishment: 3<br />
-            Speed: 10<br />
-            Population Size: 190<br />
-            Life Span: 800<br />
-            Mutation Rate: 0.1
-          </span>
-          <span>
-            <button type="submit" id="run" onclick="setup()">
-              Run Experiment
-            </button>
-            <button type="submit" id="re" onclick="re()">Reset Controls</button>
-            <button type="submit" id="info" onclick="info()">?</button>
-          </span>
-        </div>
-        <div>
-          <span id="stats">
-            Reward: 500<br />
-            Punishment: 3<br />
-            Speed: 10<br />
-            Population Size: 190<br />
-            Life Span: 800<br />
-            Mutation Rate: 0.1
-          </span>
-          <span id="currentStats">
-            Generation: 0<br />
-            Average Fitness: 250.0<br />
-            Success Rate: 0/500<br />
-            Total Successes: 0<br />
-            Age: 0
-          </span>
-        </div>
+<body>
+  <main>
+    <div class="controls">
+      <div class="row">
+        <button onclick="paused=false">Play</button>
+        <button onclick="paused=true">Pause</button>
       </div>
-      <div class="view">
-        <progress value="0" id="age"></progress>
-        <div id="canvas"></div>
+      <div class="row">
+        <button onclick="paused=true;step()">Step x1</button>
+        <button onclick="paused=true;Array(5).fill(0).forEach(() => step())">Step x5</button>
+        <button onclick="paused=true;Array(10).fill(0).forEach(() => step())">Step x10</button>
+        <button onclick="paused=true;Array(25).fill(0).forEach(() => step())">Step x25</button>
+        <button onclick="paused=true;Array(50).fill(0).forEach(() => step())">Step x50</button>
+        <button onclick="paused=true;Array(100).fill(0).forEach(() => step())">Step x100</button>
       </div>
-    </main>
-  </body>
+      <label>
+        Reward:
+        <input type="range" min="0" max="10000" id="reward" value="300" onkeyup="printResult()">
+      </label>
+      <label>
+        Punishment:
+        <input type="range" min="0" max="10000" id="punishment" value="500" onkeyup="printResult()">
+      </label>
+      <label>
+        Speed:
+        <input type="range" min="1" max="50" id="speed" value="5" onkeyup="printResult()">
+      </label>
+      <label>
+        Population Size:
+        <input type="range" min="1" max="1000" value="200" id="population" oninput="printResult()">
+      </label>
+      <label>
+        Life Span:
+        <input type="range" min="300" max="5000" value="800" id="lifeSpan" oninput="printResult()">
+      </label>
+      <label>
+        Mutation Rate:
+        <input type="range" min="0" max="99" value="10" id="mutation" oninput="printResult()">
+      </label>
+      <table id="out"></table>
+      <div class="row">
+        <button type="submit" id="run" onclick="setup()">Run Experiment</button>
+        <button type="submit" id="re" onclick="re()">Reset Controls</button>
+        <button type="submit" id="info" onclick="info()">?</button>
+      </div>
+    </div>
+    <div class="stats">
+      <table id="currentStats"></table>
+    </div>
+    <progress id="age" class="progress"></progress>
+    <div id="canvas" class="canvas"></div>
+    <div class="inspector">
+      <h1 id="inspector-title">Fly 01</h1>
+      <table>
+        <tbody id="inspector-stats"></tbody>
+      </table>
+      <h2>Genes</h2>
+      <table>
+        <tbody id="inspector-genes"></tbody>
+      </table>
+    </div>
+  </main>
+</body>
 </html>
